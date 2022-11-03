@@ -17,37 +17,45 @@ const UsersList = () => {
   console.log(currentUsers);
   useEffect(() => {
     setLoading(true);
-  axios
-      .get(`https://randomuser.me/api/?results=${500}&seed=abc`)
-      .then(function (response) {
+    axios
+      .get(`https://randomuser.me/api/?results=${300}&seed=abc`)
+      .then(function(response) {
         // handle success
         setUsers(response.data.results);
         console.log(response.data.results);
         setLoading(false)
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // handle error
         console.log(error);
         setLoading(false);
       });
   }, [])
-  
+
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex flex-col items-center pt-10">
+        <h1 className="text-[2rem] font-bold mb-3">Users</h1>
+
       {
         loading ? (
-          <Loader/>
+          <div className="mt-40">
+            <Loader />
+          </div>
+
         ) : (
-          <div className="flex flex-wrap gap-10 justify-center w-full max-w-[1000px] px-5 py-10">
-        {
-          currentUsers?.map((user, idx)=>{
-            return (
-             <UserCard user={user}/>
-            )
-          })
-        }  
-        <Pagination totalPosts={users?.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
-      </div>
+          <div className="flex flex-wrap gap-10 justify-center w-full max-w-[1250px] px-5 py-10">
+            {
+              currentUsers?.map((user, idx) => {
+                return (
+                  <div key={idx}>
+                    <UserCard user={user} />
+                  </div>
+
+                )
+              })
+            }
+            <Pagination totalPosts={users?.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+          </div>
         )
       }
     </div>

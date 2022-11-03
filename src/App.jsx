@@ -5,6 +5,8 @@ import Home from './pages/home';
 import Error404 from './pages/error404';
 import Login from './pages/login';
 import Nav from './components/Nav'
+import ErrorBoundaryTest from "./pages/error-boundary"
+
 import {AuthContextProvider} from './context/AuthContext';
 import {
   Route,
@@ -21,6 +23,7 @@ export default function App() {
             <Route path='/' element={<Home />} />
             
             <Route path='login' element={<Login />} />
+           <Route path='error-boundary' element={<ErrorBoundaryTest />} />
             <Route path='users' element={<PrivateRoutes><UsersList /></PrivateRoutes>} />
             <Route path='*' element={<Error404 />} />
         </Routes>
