@@ -39,7 +39,7 @@ const Nav = () => {
   </div>     }
       </div>
             </div> : 
-            <Link to="/login" className="bg-[#1e75ff] text-white px-3 py-2 rounded hover:scale-105 transition delay-100 duration-300 ease-in-out">Sign in</Link>
+            <Link to="/login" className="bg-[#1e75ff] text-white font-bold px-3 py-2 rounded hover:scale-105 transition delay-100 duration-300 ease-in-out">Sign in</Link>
 
           }
         </div>
